@@ -12,6 +12,11 @@ public class Aluno {
     private String site;
     private Double nota;
 
+    @Override
+    public String toString() {
+        return getId() + "-" + getNome();
+    }
+
     public Long getId() {
         return id;
     }
