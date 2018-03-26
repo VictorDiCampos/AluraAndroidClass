@@ -18,16 +18,18 @@ public class FormularioHelper  {
     private final EditText campoSite;
     private final RatingBar campoNota;
 
+    private Aluno aluno;
+
     public FormularioHelper(Activity formulario_activity) {
         campoNome = (EditText) formulario_activity.findViewById(R.id.form_nome);
         campoEndereco = (EditText) formulario_activity.findViewById(R.id.form_endereco);
         campoTelefone = (EditText) formulario_activity.findViewById(R.id.form_telefone);
         campoSite = (EditText) formulario_activity.findViewById(R.id.form_site);
         campoNota = (RatingBar) formulario_activity.findViewById(R.id.form_nota);
+        aluno = new Aluno();
     }
 
     public Aluno getAluno() {
-        Aluno aluno = new Aluno();
         aluno.setNome(campoNome.getText().toString());
         aluno.setEndereco(campoEndereco.getText().toString());
         aluno.setTelefone(campoTelefone.getText().toString());
@@ -37,4 +39,12 @@ public class FormularioHelper  {
         return aluno;
     }
 
+    public void setFormData(Aluno aluno) {
+        campoNome.setText(aluno.getNome());
+        campoEndereco.setText(aluno.getEndereco());
+        campoTelefone.setText(aluno.getTelefone());
+        campoSite.setText(aluno.getSite());
+        campoNota.setProgress(aluno.getNota().intValue());
+        this.aluno = aluno;
+    }
 }
